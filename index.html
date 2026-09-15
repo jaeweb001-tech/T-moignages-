@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAE Ministries — Partagez votre témoignage</title>
+<meta name="description" content="JAE Ministries recueille les témoignages de la puissance de Dieu à l'œuvre dans votre vie. Partagez le vôtre.">
+<link rel="icon" href="assets/logo.jpg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== ÉCRAN 1 : ACCUEIL ===================== -->
+<section id="view-home" class="view active">
+  <div class="wrap">
+    <div class="brand">
+      <img src="assets/logo.jpg" alt="Logo JAE Ministries">
+    </div>
+  </div>
+
+  <div class="hero">
+    <p class="kicker">JAE Ministries</p>
+    <h1>Partagez le témoignage de ce que Dieu a fait dans votre vie</h1>
+    <p class="lead">
+      Chaque miracle mérite d'être raconté. Prenez un instant pour écrire
+      votre témoignage — il sera lu avec soin et gardé précieusement.
+    </p>
+    <button class="btn btn-primary" id="btn-start" type="button">Je donne mon témoignage</button>
+    <a href="admin.html" class="hero-footer-link">Espace administrateur</a>
+  </div>
+</section>
+
+<!-- ===================== ÉCRAN 2 : FORMULAIRE ===================== -->
+<section id="view-form" class="view">
+  <div class="wrap">
+    <div class="form-header">
+      <a href="#" class="back-link" id="btn-back-home">&larr; Retour</a>
+      <h2>Votre témoignage</h2>
+      <p>Les champs marqués d'une étoile sont obligatoires. Tout le reste est facultatif — vous pouvez rester anonyme.</p>
+    </div>
+
+    <div class="form-error-banner" id="form-error-banner"></div>
+
+    <form class="testimony-form" id="testimony-form" novalidate>
+
+      <div class="field">
+        <label for="input-nom">Nom et prénom <span class="opt">(facultatif)</span></label>
+        <input type="text" id="input-nom" name="nom" placeholder="Votre nom et prénom" maxlength="120" autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label for="input-whatsapp">Numéro WhatsApp <span class="opt">(facultatif)</span></label>
+        <input type="tel" id="input-whatsapp" name="whatsapp" placeholder="Ex : +225 00 00 00 00 00" maxlength="30" autocomplete="tel">
+      </div>
+
+      <div class="field">
+        <label>Vous êtes <span class="req">*</span></label>
+        <div class="genre-options">
+          <label class="genre-option">
+            <input type="radio" name="genre" value="Femme" required>
+            <span>Femme</span>
+          </label>
+          <label class="genre-option">
+            <input type="radio" name="genre" value="Homme" required>
+            <span>Homme</span>
+          </label>
+        </div>
+        <div class="field-error" id="error-genre">Merci de sélectionner une option.</div>
+      </div>
+
+      <div class="field">
+        <label for="input-texte">Votre témoignage <span class="req">*</span></label>
+        <textarea id="input-texte" name="texte" placeholder="Racontez ici, avec vos mots, ce que Dieu a fait dans votre vie…" required></textarea>
+        <div class="word-count" id="word-count">0 / 5000 mots</div>
+        <div class="field-error" id="error-texte">Merci d'écrire votre témoignage (5000 mots maximum).</div>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary btn-block" id="btn-submit">Envoyer mon témoignage</button>
+        <p class="submit-note">Votre témoignage sera transmis uniquement à l'équipe de JAE Ministries.</p>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- ===================== ÉCRAN 3 : REMERCIEMENT ===================== -->
+<section id="view-thanks" class="view">
+  <div class="thanks">
+    <div class="glyph">✦</div>
+    <h2>Merci d'avoir partagé votre témoignage</h2>
+    <p>
+      Votre témoignage a bien été reçu par JAE Ministries. Nous vous remercions
+      du fond du cœur pour votre confiance et pour avoir pris le temps de
+      raconter ce que Dieu a accompli dans votre vie.
+    </p>
+    <p>
+      Que le Seigneur continue de vous combler et de faire, davantage encore,
+      de merveilleux miracles dans votre vie et celle de vos proches.
+    </p>
+    <p class="verse">« Béni soit Dieu qui ne cesse d'agir en faveur de ceux qui l'invoquent. »</p>
+    <button class="btn btn-ghost" id="btn-new-testimony" type="button">Envoyer un autre témoignage</button>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<!-- Firebase (compat, sans build — compatible GitHub Pages) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
