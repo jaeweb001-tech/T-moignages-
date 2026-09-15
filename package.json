@@ -1,0 +1,13 @@
+{
+  "name": "jae-ministries-cleanup",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Script de purge automatique des témoignages de plus de 20 jours (JAE Ministries)",
+  "main": "scripts/cleanup.js",
+  "scripts": {
+    "cleanup": "node scripts/cleanup.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.1.0"
+  }
+}
