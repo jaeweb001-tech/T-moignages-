@@ -1,0 +1,27 @@
+name: Purge des témoignages de plus de 20 jours
+
+on:
+  schedule:
+    # Chaque jour à 03h00 UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch: {}   # permet aussi de lancer la purge manuellement depuis l'onglet "Actions"
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupération du code
+        uses: actions/checkout@v4
+
+      - name: Installation de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Installation des dépendances
+        run: npm install
+
+      - name: Exécution de la purge
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: npm run cleanup
