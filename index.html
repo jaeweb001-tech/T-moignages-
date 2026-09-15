@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JAE Ministries — Partagez votre Témoignage</title>
+  <meta name="description" content="JAE Ministries - Partagez les merveilles que Dieu a accomplies dans votre vie." />
+  <link rel="icon" href="img/logo.jpg" type="image/jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="img/logo.jpg" alt="JAE Ministries" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">JAE MINISTRIES</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="#temoignage" class="btn btn-gold">Je donne mon témoignage</a>
+        <a href="admin.html" class="btn btn-outline">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-logo-wrap">
+        <img src="img/logo.jpg" alt="JAE Ministries Logo" class="hero-logo" />
+      </div>
+      <p class="hero-badge">✦ Témoignages vivants</p>
+      <h1 class="hero-title">Partagez les merveilles<br>que Dieu a faites dans votre vie</h1>
+      <p class="hero-subtitle">
+        Votre témoignage est une lumière pour d’autres.<br>
+        Racontez comment le Seigneur vous a touché, guéri, délivré ou béni.
+      </p>
+      <a href="#temoignage" class="btn btn-gold btn-lg">Je donne mon témoignage</a>
+    </div>
+  </section>
+
+  <section class="section" id="temoignage">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Votre histoire compte</p>
+        <h2 class="section-title">Envoyez votre témoignage</h2>
+        <p class="section-desc">
+          Remplissez le formulaire ci-dessous. Votre témoignage sera transmis au centre de JAE Ministries.
+          Les champs marqués d’un <span class="req">*</span> sont obligatoires.
+        </p>
+      </div>
+
+      <div class="form-card" id="form-card">
+        <form id="temoignage-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nom">Nom et prénom <span class="optional">(facultatif)</span></label>
+              <input type="text" id="nom" name="nom" placeholder="Ex : Jean Dupont" maxlength="200" />
+            </div>
+            <div class="form-group">
+              <label for="whatsapp">Numéro WhatsApp <span class="optional">(facultatif)</span></label>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ex : +243 812 345 678" maxlength="50" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Genre <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="genre" value="homme" required />
+                <span class="radio-custom"></span>
+                Homme
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="genre" value="femme" required />
+                <span class="radio-custom"></span>
+                Femme
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="temoignage">Votre témoignage <span class="req">*</span></label>
+            <textarea id="temoignage" name="temoignage" rows="10" required
+              placeholder="Racontez ici ce que Dieu a fait dans votre vie..." maxlength="15000"></textarea>
+            <div class="word-count"><span id="word-count">0</span> mots</div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-gold btn-lg" id="submit-btn">
+              <span class="btn-text">Envoyer mon témoignage</span>
+              <span class="btn-loading" hidden>Envoi en cours...</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- MESSAGE DE REMERCIEMENT -->
+        <div class="thank-you" id="thank-you" hidden>
+          <div class="thank-icon">✝</div>
+          <h3>Merci d'avoir donné votre témoignage</h3>
+          <p class="thank-msg">
+            Que Dieu multiplie ces miracles et prodiges dans votre vie.
+          </p>
+          <p class="thank-verse">
+            « Ils ont vaincu par le sang de l’Agneau et par la parole de leur témoignage. »<br>
+            <em>— Apocalypse 12:11</em>
+          </p>
+          <button type="button" class="btn btn-outline" id="btn-new">Témoigner encore</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="container">
+      <blockquote>
+        « Que votre lumière brille ainsi devant les hommes, afin qu’ils voient vos bonnes œuvres, 
+        et qu’ils glorifient votre Père qui est dans les cieux. »
+        <cite>— Matthieu 5:16</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <img src="img/logo.jpg" alt="JAE Ministries" class="footer-logo" />
+      <p class="footer-name">JAE MINISTRIES</p>
+      <p class="footer-copy">© 2026 JAE Ministries. Tous droits réservés.</p>
+      <p class="footer-note">Site de recueil de témoignages — Que Dieu soit glorifié.</p>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
