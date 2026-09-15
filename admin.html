@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — JAE Ministries</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/img/logo.jpg" type="image/jpeg">
+</head>
+<body class="admin-body">
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-card">
+            <img src="/img/logo.jpg" alt="JAE Ministries" class="login-logo">
+            <h1>Espace Administrateur</h1>
+            <p class="login-subtitle">JAE Ministries — Recueil de témoignages</p>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" id="email" name="email" required placeholder="jaeweb001@gmail.com" autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required placeholder="••••••••" autocomplete="current-password">
+                </div>
+                <div id="login-error" class="error-msg" style="display:none;"></div>
+                <button type="submit" class="btn btn-gold btn-block" id="login-btn">
+                    <span class="btn-text">Se connecter</span>
+                    <span class="btn-loading" style="display:none;">Connexion...</span>
+                </button>
+            </form>
+            <a href="/" class="back-link">← Retour au site</a>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard" style="display:none;">
+        <header class="admin-header">
+            <div class="container header-inner">
+                <div class="logo-area">
+                    <img src="/img/logo.jpg" alt="JAE Ministries" class="logo-sm">
+                    <div>
+                        <h1>Administration</h1>
+                        <p>Témoignages des 20 derniers jours</p>
+                    </div>
+                </div>
+                <div class="admin-actions">
+                    <button class="btn btn-outline" id="btn-refresh">Actualiser</button>
+                    <button class="btn btn-outline" id="btn-logout">Déconnexion</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container admin-main">
+            <!-- Stats -->
+            <div class="stats-grid" id="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-total">—</div>
+                    <div class="stat-label">Total (20 jours)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-today">—</div>
+                    <div class="stat-label">Aujourd’hui</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-hommes">—</div>
+                    <div class="stat-label">Hommes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-femmes">—</div>
+                    <div class="stat-label">Femmes</div>
+                </div>
+            </div>
+
+            <!-- Liste des témoignages -->
+            <div class="admin-section">
+                <div class="section-header-row">
+                    <h2>Témoignages reçus</h2>
+                    <span class="badge" id="count-badge">0 témoignage</span>
+                </div>
+                <div id="temoignages-list" class="temoignages-list">
+                    <div class="loading">Chargement des témoignages...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore-compat.js"></script>
+    <script src="/js/firebase-config.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>
