@@ -1,0 +1,54 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /temoignages/{docId} {
+
+      // N'importe qui peut ENVOYER un témoignage, en TEXTE ou en AUDIO :
+      // - genre obligatoire, valeur Homme ou Femme
+      // - createdAt doit être l'horodatage serveur (anti-triche sur les dates)
+      // - texte : non vide, limité à ~60 000 caractères (≈ 10000 mots)
+      // - audio : doit pointer vers un fichier hébergé sur Cloudinary, avec
+      //   une durée déclarée de 11 minutes maximum (10 min + petite marge)
+      allow create: if
+        request.resource.data.genre in ['Homme', 'Femme'] &&
+        request.resource.data.createdAt == request.time &&
+        (
+          (
+            request.resource.data.type == 'texte' &&
+            request.resource.data.texte is string &&
+            request.resource.data.texte.size() > 0 &&
+            request.resource.data.texte.size() <= 60000
+          )
+          ||
+          (
+            request.resource.data.type == 'audio' &&
+            request.resource.data.audioUrl is string &&
+            request.resource.data.audioUrl.size() > 0 &&
+            request.resource.data.audioUrl.matches('^https://res[.]cloudinary[.]com/.*') &&
+            request.resource.data.audioDuration is number &&
+            request.resource.data.audioDuration > 0 &&
+            request.resource.data.audioDuration <= 660
+          )
+        );
+
+      // Seul l'administrateur (connecté avec jaeweb001@gmail.com) peut LIRE
+      // et SUPPRIMER les témoignages.
+      allow read, delete: if request.auth != null
+        && request.auth.token.email == 'jaeweb001@gmail.com';
+
+      // Seul l'administrateur peut MODIFIER un témoignage, et uniquement pour
+      // poser ou retirer la marque "partagé sur WhatsApp" (partageWhatsappAt).
+      // Le contenu du témoignage lui-même (texte, audio, genre...) ne peut
+      // jamais être modifié par personne, admin compris.
+      allow update: if request.auth != null
+        && request.auth.token.email == 'jaeweb001@gmail.com'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['partageWhatsappAt'])
+        && (
+          !('partageWhatsappAt' in request.resource.data) ||
+          request.resource.data.partageWhatsappAt == request.time
+        );
+    }
+  }
+}
